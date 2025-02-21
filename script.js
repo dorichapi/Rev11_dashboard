@@ -151,21 +151,30 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
             maintainAspectRatio: false,
             plugins: {
                 legend: { display: false },
-                title: { display: true, text: label, font: { size: 48, weight: 'bold' } }
+                title: { 
+                    display: true, 
+                    text: label, 
+                    font: { size: titleFontSize, weight: 'bold' } 
+                }
             },
             scales: {
                 y: {
                     beginAtZero: true,
                     max: maxY,
-                    title: { display: true, text: unit, font: { size: 36, weight: 'bold' } },
-                    ticks: { font: { size: 36, weight: 'bold' } }
+                    title: { 
+                        display: true, 
+                        text: unit, 
+                        font: { size: axisTitleFontSize, weight: 'bold' } 
+                    },
+                    ticks: { font: { size: axisLabelFontSize, weight: 'bold' } }
                 },
-                x: { ticks: { font: { size: 36, weight: 'bold' } } }
+                x: { 
+                    ticks: { font: { size: axisLabelFontSize, weight: 'bold' } } 
+                }
             }
         }
     });
 }
-
 
 // ✅ 日付フォーマット関数
 function formatDate(dateString) {
