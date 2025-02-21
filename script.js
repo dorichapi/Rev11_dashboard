@@ -139,9 +139,9 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
 
     if (screenWidth > 1200) { 
         // PC向け
-        titleFontSize = 32;
-        axisTitleFontSize = 24;
-        axisLabelFontSize = 20;
+        titleFontSize = 45;
+        axisTitleFontSize = 32;
+        axisLabelFontSize = 32;
     } else if (screenWidth > 768) { 
         // タブレット向け
         titleFontSize = 25;
