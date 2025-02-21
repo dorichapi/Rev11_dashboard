@@ -124,13 +124,34 @@ document.getElementById('covid-status-card').addEventListener('click', function(
 
 
 
-// ✅ グラフ作成関数
+// ✅ グラフ作成関数（フォントサイズを動的に変更）
 function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
     const canvas = document.getElementById(canvasId);
 
-    // ✅ 既存のグラフがある場合は削除
+    // ✅ 既存のグラフがある場合は削除（エラー防止）
     if (canvas.chartInstance) {
         canvas.chartInstance.destroy();
+    }
+
+    // ✅ 画面幅に応じたフォントサイズの調整（適切な範囲で変更）
+    let screenWidth = window.innerWidth;
+    let titleFontSize, axisTitleFontSize, axisLabelFontSize;
+
+    if (screenWidth > 1200) { 
+        // PC向け
+        titleFontSize = 24;
+        axisTitleFontSize = 18;
+        axisLabelFontSize = 14;
+    } else if (screenWidth > 768) { 
+        // タブレット向け
+        titleFontSize = 20;
+        axisTitleFontSize = 16;
+        axisLabelFontSize = 12;
+    } else { 
+        // スマホ向け
+        titleFontSize = 16;
+        axisTitleFontSize = 12;
+        axisLabelFontSize = 10;
     }
 
     // ✅ 新しいグラフを作成し、インスタンスを保存
@@ -154,7 +175,7 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                 title: { 
                     display: true, 
                     text: label, 
-                    font: { size: titleFontSize, weight: 'bold' } 
+                    font: { size: titleFontSize } // ✅ `weight` を削除
                 }
             },
             scales: {
@@ -164,17 +185,20 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
                     title: { 
                         display: true, 
                         text: unit, 
-                        font: { size: axisTitleFontSize, weight: 'bold' } 
+                        font: { size: axisTitleFontSize } 
                     },
-                    ticks: { font: { size: axisLabelFontSize, weight: 'bold' } }
+                    ticks: { font: { size: axisLabelFontSize } }
                 },
                 x: { 
-                    ticks: { font: { size: axisLabelFontSize, weight: 'bold' } } 
+                    ticks: { font: { size: axisLabelFontSize } } 
                 }
             }
         }
     });
 }
+
+
+
 
 // ✅ 日付フォーマット関数
 function formatDate(dateString) {
