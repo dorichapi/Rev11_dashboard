@@ -139,19 +139,19 @@ function createChart(canvasId, label, labels, data, color, unit, maxY = null) {
 
     if (screenWidth > 1200) { 
         // PC向け
-        titleFontSize = 24;
-        axisTitleFontSize = 18;
-        axisLabelFontSize = 14;
+        titleFontSize = 32;
+        axisTitleFontSize = 24;
+        axisLabelFontSize = 20;
     } else if (screenWidth > 768) { 
         // タブレット向け
-        titleFontSize = 20;
-        axisTitleFontSize = 16;
-        axisLabelFontSize = 12;
+        titleFontSize = 25;
+        axisTitleFontSize = 18;
+        axisLabelFontSize = 16;
     } else { 
         // スマホ向け
-        titleFontSize = 16;
-        axisTitleFontSize = 12;
-        axisLabelFontSize = 10;
+        titleFontSize = 25;
+        axisTitleFontSize = 18;
+        axisLabelFontSize = 16;
     }
 
     // ✅ 新しいグラフを作成し、インスタンスを保存
